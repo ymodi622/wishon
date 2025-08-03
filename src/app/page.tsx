@@ -21,8 +21,8 @@ export default function BirthdayWish() {
 
   // You can change this to your desired question and answer
   const question =
-    "What&apos;s your favorite color that we talked about last week?";
-  const correctAnswer = "purple"; // Change this to your correct answer
+    "What place did we first held our hands and talked about our feelings?";
+  const correctAnswer = "walkway"; // Change this to your correct answer
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +61,7 @@ export default function BirthdayWish() {
                 A Little Question for You
               </CardTitle>
               <CardDescription className="text-gray-600">
-                Think carefully... you know the answer! 💭
+                {/* Think carefully... you know the answer! 💭 */}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -111,10 +111,10 @@ export default function BirthdayWish() {
                 </div>
               </div>
               <CardTitle className="text-2xl bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Happy Birthday, Beautiful! 🎉
+                Happy Birthday, Beautiful!
               </CardTitle>
               <CardDescription className="text-gray-600">
-                A special message just for you
+                A special poem just for you
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
@@ -122,18 +122,40 @@ export default function BirthdayWish() {
                 {/* Poetry Section */}
                 <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-lg border border-pink-100">
                   <div className="space-y-3 text-gray-700 leading-relaxed">
-                    <p className="italic font-medium text-lg">
-                      &quot;On this special day of yours,
-                    </p>
-                    <p className="italic">I wish you joy that never fades,</p>
                     <p className="italic">
-                      Dreams that dance like morning light,
+                      They say there doesn’t exists a girl,
                     </p>
                     <p className="italic">
-                      And happiness in all life&apos;s shades.
+                      Whose calmness can make you feel home,
                     </p>
-                    <p className="italic font-medium text-lg mt-4">
-                      May your birthday be as wonderful as you are!&quot;
+                    <p className="italic">
+                      Whose silliness can make you a child too,
+                    </p>
+                    <p className="italic">
+                      They say there doesn’t exists a girl,
+                    </p>
+                    <p className="italic">
+                      Whose eyes are deep as a sea and hair smells blossom,
+                    </p>
+                    <p className="italic">
+                      Whose touch feels like breeze at shore,
+                    </p>
+                    <p className="italic">
+                      Whose whispers never escape your ears,
+                    </p>
+                    <p className="italic">
+                      Whose hug is warm enough to stable your soul
+                    </p>
+                    <p className="italic">
+                      They say there doesn’t exists a girl,
+                    </p>
+                    <p className="italic">
+                      Whose mere presence is gentle enough to get all your
+                      heart,
+                    </p>
+                    <p className="italic  font-medium text-lg mt-4">
+                      Only after having you in my life I started wondering they
+                      may be wrong.
                     </p>
                   </div>
                 </div>
