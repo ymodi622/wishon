@@ -1,33 +1,39 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Heart, Sparkles, Gift } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Heart, Sparkles, Gift } from "lucide-react";
 
 export default function BirthdayWish() {
-  const [answer, setAnswer] = useState("")
-  const [showCard, setShowCard] = useState(false)
-  const [isWrong, setIsWrong] = useState(false)
+  const [answer, setAnswer] = useState("");
+  const [showCard, setShowCard] = useState(false);
+  const [isWrong, setIsWrong] = useState(false);
 
   // You can change this to your desired question and answer
-  const question = "What's your favorite color that we talked about last week?"
-  const correctAnswer = "purple" // Change this to your correct answer
+  const question =
+    "What&apos;s your favorite color that we talked about last week?";
+  const correctAnswer = "purple"; // Change this to your correct answer
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (answer.toLowerCase().trim() === correctAnswer.toLowerCase()) {
-      setShowCard(true)
-      setIsWrong(false)
+      setShowCard(true);
+      setIsWrong(false);
     } else {
-      setIsWrong(true)
-      setTimeout(() => setIsWrong(false), 2000)
+      setIsWrong(true);
+      setTimeout(() => setIsWrong(false), 2000);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 flex items-center justify-center p-4">
@@ -42,15 +48,21 @@ export default function BirthdayWish() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
             Special Birthday Message
           </h1>
-          <p className="text-gray-600">Answer the question to reveal your surprise!</p>
+          <p className="text-gray-600">
+            Answer the question to reveal your surprise!
+          </p>
         </div>
 
         {/* Question Form */}
         {!showCard && (
           <Card className="backdrop-blur-sm bg-white/80 border-pink-200 shadow-xl">
             <CardHeader className="text-center">
-              <CardTitle className="text-xl text-gray-800">A Little Question for You</CardTitle>
-              <CardDescription className="text-gray-600">Think carefully... you know the answer! 💭</CardDescription>
+              <CardTitle className="text-xl text-gray-800">
+                A Little Question for You
+              </CardTitle>
+              <CardDescription className="text-gray-600">
+                Think carefully... you know the answer! 💭
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,12 +77,16 @@ export default function BirthdayWish() {
                     onChange={(e) => setAnswer(e.target.value)}
                     placeholder="Type your answer here..."
                     className={`transition-all duration-300 ${
-                      isWrong ? "border-red-400 bg-red-50 shake" : "border-pink-300 focus:border-purple-400"
+                      isWrong
+                        ? "border-red-400 bg-red-50 shake"
+                        : "border-pink-300 focus:border-purple-400"
                     }`}
                     required
                   />
                   {isWrong && (
-                    <p className="text-red-500 text-sm animate-pulse">Hmm, that's not quite right. Try again! 🤔</p>
+                    <p className="text-red-500 text-sm animate-pulse">
+                      Hmm, that&apos;s not quite right. Try again! 🤔
+                    </p>
                   )}
                 </div>
                 <Button
@@ -97,18 +113,28 @@ export default function BirthdayWish() {
               <CardTitle className="text-2xl bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                 Happy Birthday, Beautiful! 🎉
               </CardTitle>
-              <CardDescription className="text-gray-600">A special message just for you</CardDescription>
+              <CardDescription className="text-gray-600">
+                A special message just for you
+              </CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="space-y-4 text-center">
-                {/* Poetry Section - Replace this with your own poetry */}
+                {/* Poetry Section */}
                 <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-lg border border-pink-100">
                   <div className="space-y-3 text-gray-700 leading-relaxed">
-                    <p className="italic font-medium text-lg">"On this special day of yours,</p>
+                    <p className="italic font-medium text-lg">
+                      &quot;On this special day of yours,
+                    </p>
                     <p className="italic">I wish you joy that never fades,</p>
-                    <p className="italic">Dreams that dance like morning light,</p>
-                    <p className="italic">And happiness in all life's shades.</p>
-                    <p className="italic font-medium text-lg mt-4">May your birthday be as wonderful as you are!"</p>
+                    <p className="italic">
+                      Dreams that dance like morning light,
+                    </p>
+                    <p className="italic">
+                      And happiness in all life&apos;s shades.
+                    </p>
+                    <p className="italic font-medium text-lg mt-4">
+                      May your birthday be as wonderful as you are!&quot;
+                    </p>
                   </div>
                 </div>
 
@@ -118,12 +144,14 @@ export default function BirthdayWish() {
                   <Heart className="h-5 w-5 fill-current" />
                 </div>
 
-                <div className="text-sm text-gray-500 mt-6">Hope your special day is absolutely amazing! 🎂✨</div>
+                <div className="text-sm text-gray-500 mt-6">
+                  Hope your special day is absolutely amazing! 🎂✨
+                </div>
               </div>
             </CardContent>
           </Card>
         )}
       </div>
     </div>
-  )
+  );
 }
