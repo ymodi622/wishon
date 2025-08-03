@@ -1,103 +1,129 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import type React from "react"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Heart, Sparkles, Gift } from "lucide-react"
+
+export default function BirthdayWish() {
+  const [answer, setAnswer] = useState("")
+  const [showCard, setShowCard] = useState(false)
+  const [isWrong, setIsWrong] = useState(false)
+
+  // You can change this to your desired question and answer
+  const question = "What's your favorite color that we talked about last week?"
+  const correctAnswer = "purple" // Change this to your correct answer
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (answer.toLowerCase().trim() === correctAnswer.toLowerCase()) {
+      setShowCard(true)
+      setIsWrong(false)
+    } else {
+      setIsWrong(true)
+      setTimeout(() => setIsWrong(false), 2000)
+    }
+  }
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-8">
+        {/* Header with decorative elements */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center items-center gap-2">
+            <Sparkles className="h-8 w-8 text-pink-500" />
+            <Gift className="h-10 w-10 text-purple-600" />
+            <Sparkles className="h-8 w-8 text-pink-500" />
+          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+            Special Birthday Message
+          </h1>
+          <p className="text-gray-600">Answer the question to reveal your surprise!</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Question Form */}
+        {!showCard && (
+          <Card className="backdrop-blur-sm bg-white/80 border-pink-200 shadow-xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-xl text-gray-800">A Little Question for You</CardTitle>
+              <CardDescription className="text-gray-600">Think carefully... you know the answer! 💭</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="answer" className="text-gray-700 font-medium">
+                    {question}
+                  </Label>
+                  <Input
+                    id="answer"
+                    type="text"
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    placeholder="Type your answer here..."
+                    className={`transition-all duration-300 ${
+                      isWrong ? "border-red-400 bg-red-50 shake" : "border-pink-300 focus:border-purple-400"
+                    }`}
+                    required
+                  />
+                  {isWrong && (
+                    <p className="text-red-500 text-sm animate-pulse">Hmm, that's not quite right. Try again! 🤔</p>
+                  )}
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300"
+                >
+                  Reveal My Surprise 🎁
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Birthday Card - Hidden until correct answer */}
+        {showCard && (
+          <Card className="backdrop-blur-sm bg-white/90 border-pink-200 shadow-2xl animate-in fade-in-0 zoom-in-95 duration-700">
+            <CardHeader className="text-center border-b border-pink-100">
+              <div className="flex justify-center mb-4">
+                <div className="relative">
+                  <Heart className="h-12 w-12 text-pink-500 animate-pulse" />
+                  <Sparkles className="h-6 w-6 text-yellow-400 absolute -top-1 -right-1 animate-bounce" />
+                </div>
+              </div>
+              <CardTitle className="text-2xl bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                Happy Birthday, Beautiful! 🎉
+              </CardTitle>
+              <CardDescription className="text-gray-600">A special message just for you</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="space-y-4 text-center">
+                {/* Poetry Section - Replace this with your own poetry */}
+                <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-lg border border-pink-100">
+                  <div className="space-y-3 text-gray-700 leading-relaxed">
+                    <p className="italic font-medium text-lg">"On this special day of yours,</p>
+                    <p className="italic">I wish you joy that never fades,</p>
+                    <p className="italic">Dreams that dance like morning light,</p>
+                    <p className="italic">And happiness in all life's shades.</p>
+                    <p className="italic font-medium text-lg mt-4">May your birthday be as wonderful as you are!"</p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center items-center gap-2 text-pink-600">
+                  <Heart className="h-5 w-5 fill-current" />
+                  <span className="font-medium">With love and best wishes</span>
+                  <Heart className="h-5 w-5 fill-current" />
+                </div>
+
+                <div className="text-sm text-gray-500 mt-6">Hope your special day is absolutely amazing! 🎂✨</div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+      </div>
     </div>
-  );
+  )
 }
