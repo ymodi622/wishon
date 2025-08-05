@@ -111,7 +111,7 @@ export default function BirthdayWish() {
                 </div>
               </div>
               <CardTitle className="text-2xl bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Happy Birthday, Beautiful!
+                Happy Birthday, Dhruvi!
               </CardTitle>
               <CardDescription className="text-gray-600">
                 A special poem just for you
