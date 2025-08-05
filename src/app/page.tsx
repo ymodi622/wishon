@@ -157,6 +157,7 @@ export default function BirthdayWish() {
                       Only after having you in my life I started wondering they
                       may be wrong.
                     </p>
+                    <p className="italic">-Your babu</p>
                   </div>
                 </div>
 
